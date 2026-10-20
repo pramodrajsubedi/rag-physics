@@ -22,6 +22,10 @@ class QueryOutput (BaseModel): # Defining a Pydantic model for the output data s
 def root():
     return {"message" : "Space Physics RAG APi is running"} #This is a simple endpoint that returns a message indicating that the API is running. It can be used for health checks or to verify that the API is accessible.
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 @app.post("/ask", response_model=QueryOutput)# This endpoint handles POST requests to the "/ask" URL. It expects input data that matches the QueryInput model and will return data that matches the QueryOutput model.
 def ask_question(data: QueryInput):# The function takes a QueryInput object as input, which contains the question and the number of top results to retrieve.
     if not data.question.strip(): # Check if the question is empty or contains only whitespace.
