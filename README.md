@@ -23,7 +23,7 @@ arXiv API → PDF extraction → LangChain chunking → sentence-transformers
 ```
 
 **Design decisions:**
-- Sentence-transformers for embeddings — runs locally on CPU, zero API cost, no rate limits
+- Sentence-transformers for embeddings 
 - ChromaDB with persistent storage — ingestion runs once, vector store survives restarts
 - Lazy model loading — avoids cold-start failures 
 - Gemini only handles generation — keeps LLM calls minimal and fast
