@@ -18,12 +18,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install fastapi uvicorn pydantic pytest httpx
-
+        run: pip install fastapi uvicorn pydantic pytest httpx chromadb langchain-huggingface sentence-transformers google-genai python-dotenv langchain-text-splitters
       - name: Run tests
         env:
           PYTHONPATH: .
         run: pytest tests/ -v
+
       - name: Run tests
         env:
           PYTHONPATH: src
