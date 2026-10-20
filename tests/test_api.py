@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
 from fastapi.testclient import TestClient
 from unittest.mock import patch, MagicMock
 
@@ -8,8 +12,7 @@ MOCK_RESULT = {
     "chunks":  [],
 }
 
-with patch("rag.ask", return_value=MOCK_RESULT), \
-     patch("rag.collection", MagicMock(count=lambda: 100)), \
+with patch("rag.collection", MagicMock(count=MagicMock(return_value=100))), \
      patch("rag.embeddings", MagicMock()), \
      patch("rag.client", MagicMock()):
     from api.main import app

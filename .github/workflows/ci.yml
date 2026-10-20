@@ -24,6 +24,10 @@ jobs:
         env:
           PYTHONPATH: .
         run: pytest tests/ -v
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: pytest tests/ -v
 
   docker:
     runs-on: ubuntu-latest
